@@ -1,11 +1,10 @@
 <section class="title">
-	<h4><?php echo lang('sample:item_list'); ?></h4>
+	<h4><?php echo lang('streams_sample:faqs'); ?></h4>
 </section>
 
 <section class="item">
-	<?php echo form_open('admin/sample/delete');?>
 	
-	<?php if ($dogs['total'] > 0 ): ?>
+	<?php if ($faqs['total'] > 0 ): ?>
 	
 		<table>
 			<thead>
@@ -21,19 +20,19 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<?php foreach($dogs['entries'] as $dog ): ?>
+				<?php foreach($faqs['question'] as $faq ): ?>
 				<tr>
-					<td><?php echo $dog['name']; ?></td>
+					<td><?php echo $faq['question']; ?></td>
+					<td><?php echo $faq['answer']; ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
 		</table>
 		
-		<?php echo $dogs['pagination']; ?>
+		<?php echo $faqs['pagination']; ?>
 		
 	<?php else: ?>
-		<div class="no_data"><?php echo lang('streams_sample:no_dogs'); ?></div>
+		<div class="no_data"><?php echo lang('streams_sample:no_faqs'); ?></div>
 	<?php endif;?>
 	
-	<?php echo form_close(); ?>
 </section>

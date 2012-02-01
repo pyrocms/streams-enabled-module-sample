@@ -36,8 +36,8 @@ class Module_Streams_sample extends Module {
 	
 		// Add dogs streams
 		if ( ! $this->streams->streams->add_stream(
-										lang('streams_sample:dogs'),
-										'dogs',
+										lang('streams_sample:faqs'),
+										'faqs',
 										'streams_sample',
 										'sample_',
 										NULL
@@ -45,13 +45,24 @@ class Module_Streams_sample extends Module {
 									
 		// Add some fields
 		$fields = array(
-				
-				array(
-					'name'		=> 'Name',
-					'slug'		=> 'name',
-					'namespace'	=> 'streams_sample',
-					'type'		=> 'text',
-					'assign'	=> 'dogs'
+			array(
+				'name'			=> 'Question',
+				'slug'			=> 'question',
+				'namespace'		=> 'streams_sample',
+				'type'			=> 'text',
+				'extra'			=> array('max_length' => 200),
+				'assign'		=> 'faqs',
+				'title_column'	=> TRUE,
+				'required'		=> TRUE,
+				'uniqued'		=> TRUE
+			),
+			array(
+				'name'			=> 'Answer',
+				'slug'			=> 'answer',
+				'namespace'		=> 'streams_sample',
+				'type'			=> 'textarea',
+				'assign'		=> 'faqs',
+				'required'		=> TRUE
 			)
 		);
 		
@@ -63,13 +74,11 @@ class Module_Streams_sample extends Module {
 	public function uninstall()
 	{
 		$this->load->driver('Streams');
-		$this->streams->debug = FALSE;
 		
-		$this->streams->streams->delete_stream('dogs', 'streams_sample');
+		$this->streams->utilities->remove_namespace('streams_sample');
 		
 		return TRUE;
 	}
-
 
 	public function upgrade($old_version)
 	{

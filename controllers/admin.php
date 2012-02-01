@@ -13,8 +13,6 @@
  */
 class Admin extends Admin_Controller
 {
-	protected $section = 'items';
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -27,7 +25,7 @@ class Admin extends Admin_Controller
 	// --------------------------------------------------------------------------
 
 	/**
-	 * List all Dogs
+	 * List all FAQs
 	 *
 	 * We are using the Streams API to grab
 	 * data from the dogs database. It handles
@@ -46,13 +44,13 @@ class Admin extends Admin_Controller
 		// stream and namespace.
 		
 		$params = array(
-				'stream' 		=> 'dogs',
+				'stream' 		=> 'faqs',
 				'namespace'		=> 'streams_sample',
 				'paginate'		=> 'yes',
 				'page_segment'	=> 4
 		);
 		
-		$this->data->dogs = $this->streams->entries->get_entries($params);
+		$this->data->faqs = $this->streams->entries->get_entries($params);
 
 		// Build the page
 		$this->template->title($this->module_details['name'])
@@ -62,7 +60,7 @@ class Admin extends Admin_Controller
 	// --------------------------------------------------------------------------
 
 	/**
-	 * Create a new Dog entry
+	 * Create a new FAQ entry
 	 *
 	 * This uses the Streams API CP driver which
 	 * is designed to handle repetitive CP tasks
@@ -76,9 +74,9 @@ class Admin extends Admin_Controller
 	 */
 	public function create()
 	{
-		$this->template->title(lang('streams_sample:new_dog'));
+		$this->template->title(lang('streams_sample:new_faq'));
 		
-		$this->streams->cp->form('dogs', 'streams_sample', $mode = 'new', $skips = NULL, $view_override = TRUE);
+		$this->streams->cp->form('faqs', 'streams_sample', $mode = 'new', $skips = NULL, $view_override = TRUE);
 	}
 	
 	// --------------------------------------------------------------------------
