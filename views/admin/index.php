@@ -9,7 +9,8 @@
 		<table>
 			<thead>
 				<tr>
-					<th><?php echo lang('global:name'); ?></th>
+					<th><?php echo lang('streams_sample:question'); ?></th>
+					<th><?php echo lang('streams_sample:answer'); ?></th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -20,7 +21,7 @@
 				</tr>
 			</tfoot>
 			<tbody>
-				<?php foreach($faqs['question'] as $faq ): ?>
+				<?php foreach($faqs['entries'] as $faq ): ?>
 				<tr>
 					<td><?php echo $faq['question']; ?></td>
 					<td><?php echo $faq['answer']; ?></td>
