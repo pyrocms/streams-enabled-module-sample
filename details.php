@@ -54,7 +54,7 @@ class Module_Streams_sample extends Module {
 				'assign'		=> 'faqs',
 				'title_column'	=> TRUE,
 				'required'		=> TRUE,
-				'uniqued'		=> TRUE
+				'unique'		=> TRUE
 			),
 			array(
 				'name'			=> 'Answer',
