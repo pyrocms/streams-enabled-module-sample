@@ -76,7 +76,13 @@ class Admin extends Admin_Controller
 	{
 		$this->template->title(lang('streams_sample:new_faq'));
 		
-		$this->streams->cp->form('faqs', 'streams_sample', $mode = 'new', $skips = NULL, $view_override = TRUE);
+		$extra = array(
+			'return'			=> 'admin/streams_sample',
+			'success_message'	=> lang('streams_sample:submit_success'),
+			'failure_message'	=> lang('streams_sample:submit_failure')
+		);
+		
+		$this->streams->cp->form('faqs', 'streams_sample', $mode = 'new', $skips = NULL, $view_override = true, $extra);
 	}
 	
 	// --------------------------------------------------------------------------
