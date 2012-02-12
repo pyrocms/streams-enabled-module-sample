@@ -60,6 +60,34 @@ class Admin extends Admin_Controller
 	// --------------------------------------------------------------------------
 
 	/**
+	 * Alternat list all FAQs
+	 *
+	 * In this alternate index, we are using the
+	 * Streams API driver to 
+	 *
+	 * @access	public
+	 * @return	void
+	 */
+	public function _index()
+	{
+		$buttons = array(
+			array(
+				'label' 	=> lang('global:edit'),
+				'url' 		=> 'admin/streams_sample/edit/-entry_id-'
+			),
+			array(
+				'label'		=> lang('global:delete'),
+				'url' 		=> 'admin/streams_sample/delete/-entry_id-',
+				'confirm'	=> true
+			)
+		);
+		
+		$this->streams->cp->entries_table('faqs', 'streams_sample', 1, 'admin/streams_sample/index', $buttons, true);
+	}
+
+	// --------------------------------------------------------------------------
+
+	/**
 	 * Create a new FAQ entry
 	 *
 	 * This uses the Streams API CP driver which
