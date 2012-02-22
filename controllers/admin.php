@@ -17,7 +17,7 @@ class Admin extends Admin_Controller
 	{
 		parent::__construct();
 
-		$this->lang->load('streams_sample');
+		$this->lang->load('faq');
 		
 		$this->load->driver('Streams');
 	}
@@ -45,7 +45,7 @@ class Admin extends Admin_Controller
 		
 		$params = array(
 				'stream' 		=> 'faqs',
-				'namespace'		=> 'streams_sample',
+				'namespace'		=> 'faqs',
 				'paginate'		=> 'yes',
 				'page_segment'	=> 4
 		);
@@ -73,16 +73,16 @@ class Admin extends Admin_Controller
 		$buttons = array(
 			array(
 				'label' 	=> lang('global:edit'),
-				'url' 		=> 'admin/streams_sample/edit/-entry_id-'
+				'url' 		=> 'admin/faq/edit/-entry_id-'
 			),
 			array(
 				'label'		=> lang('global:delete'),
-				'url' 		=> 'admin/streams_sample/delete/-entry_id-',
+				'url' 		=> 'admin/faq/delete/-entry_id-',
 				'confirm'	=> true
 			)
 		);
 		
-		$this->streams->cp->entries_table('faqs', 'streams_sample', 1, 'admin/streams_sample/index', $buttons, true);
+		$this->streams->cp->entries_table('faqs', 'streams_sample', 1, 'admin/faq/index', $buttons, true);
 	}
 
 	// --------------------------------------------------------------------------
@@ -102,16 +102,16 @@ class Admin extends Admin_Controller
 	 */
 	public function create()
 	{
-		$this->template->title(lang('streams_sample:new_faq'));
+		$this->template->title(lang('faq:new'));
 		
 		$extra = array(
-			'return'			=> 'admin/streams_sample',
-			'success_message'	=> lang('streams_sample:submit_success'),
-			'failure_message'	=> lang('streams_sample:submit_failure'),
-			'title'				=> lang('streams_sample:new')
+			'return'			=> 'admin/faq',
+			'success_message'	=> lang('faq:submit_success'),
+			'failure_message'	=> lang('faq:submit_failure'),
+			'title'				=> lang('faq:new')
 		);
 		
-		$this->streams->cp->form('faqs', 'streams_sample', $mode = 'new', $skips = NULL, $view_override = true, $extra);
+		$this->streams->cp->form('faqs', 'faq', $mode = 'new', null, $view_override = true, $extra);
 	}
 	
 	// --------------------------------------------------------------------------

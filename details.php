@@ -1,6 +1,6 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+deta<?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Module_Streams_sample extends Module {
+class Module_Faq extends Module {
 
 	public $version = '1.0';
 
@@ -8,18 +8,18 @@ class Module_Streams_sample extends Module {
 	{
 		return array(
 			'name' => array(
-				'en' => 'Streams Sample'
+				'en' => 'FAQ'
 			),
 			'description' => array(
-				'en' => 'Sample PyroCMS module using the Streams core for CRUD.'
+				'en' => 'Frequently Asked Questions'
 			),
 			'frontend' => TRUE,
 			'backend' => TRUE,
 			'menu' => 'content',
 			'shortcuts' => array(
 				'create' => array(
-					'name' 	=> 'streams_sample:new',
-					'uri' 	=> 'admin/streams_sample/create',
+					'name' 	=> 'faq:new',
+					'uri' 	=> 'admin/faq/create',
 					'class' => 'add'
 					)
 				)
@@ -32,14 +32,14 @@ class Module_Streams_sample extends Module {
 		// do data setup.
 		$this->load->driver('Streams');
 		
-		$this->load->language('streams_sample/streams_sample');
+		$this->load->language('faq/faq');
 	
 		// Add dogs streams
 		if ( ! $this->streams->streams->add_stream(
-										lang('streams_sample:faqs'),
+										lang('faq:faqs'),
 										'faqs',
-										'streams_sample',
-										'sample_',
+										'faq',
+										'faq_',
 										NULL
 									)) return FALSE;
 									
@@ -48,7 +48,7 @@ class Module_Streams_sample extends Module {
 			array(
 				'name'			=> 'Question',
 				'slug'			=> 'question',
-				'namespace'		=> 'streams_sample',
+				'namespace'		=> 'faq',
 				'type'			=> 'text',
 				'extra'			=> array('max_length' => 200),
 				'assign'		=> 'faqs',
@@ -59,7 +59,7 @@ class Module_Streams_sample extends Module {
 			array(
 				'name'			=> 'Answer',
 				'slug'			=> 'answer',
-				'namespace'		=> 'streams_sample',
+				'namespace'		=> 'faq',
 				'type'			=> 'textarea',
 				'assign'		=> 'faqs',
 				'required'		=> TRUE
@@ -75,7 +75,7 @@ class Module_Streams_sample extends Module {
 	{
 		$this->load->driver('Streams');
 		
-		$this->streams->utilities->remove_namespace('streams_sample');
+		$this->streams->utilities->remove_namespace('faq');
 		
 		return TRUE;
 	}
