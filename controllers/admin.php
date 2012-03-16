@@ -45,7 +45,7 @@ class Admin extends Admin_Controller
 		
 		$params = array(
 				'stream' 		=> 'faqs',
-				'namespace'		=> 'faqs',
+				'namespace'		=> 'faq',
 				'paginate'		=> 'yes',
 				'page_segment'	=> 4
 		);
@@ -118,7 +118,16 @@ class Admin extends Admin_Controller
 	
 	public function edit($id = 0)
 	{
-	
+		$this->template->title(lang('faq:edit'));
+		
+		$extra = array(
+			'return'			=> 'admin/faq',
+			'success_message'	=> lang('faq:submit_success'),
+			'failure_message'	=> lang('faq:submit_failure'),
+			'title'				=> lang('faq:edit')
+		);
+		
+		$this->streams->cp->form('faqs', 'faq', 'edit', $id, $view_override = true, $extra);
 	}
 	
 	// --------------------------------------------------------------------------
