@@ -1,4 +1,4 @@
-deta<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Module_Faq extends Module {
 
