@@ -1,5 +1,5 @@
 <section class="title">
-	<h4><?php echo lang('streams_sample:faqs'); ?></h4>
+	<h4><?php echo lang('faq:faqs'); ?></h4>
 </section>
 
 <section class="item">
@@ -9,8 +9,8 @@
 		<table>
 			<thead>
 				<tr>
-					<th><?php echo lang('streams_sample:question'); ?></th>
-					<th><?php echo lang('streams_sample:answer'); ?></th>
+					<th><?php echo lang('faq:question'); ?></th>
+					<th><?php echo lang('faq:answer'); ?></th>
 				</tr>
 			</thead>
 			<tfoot>
@@ -34,7 +34,7 @@
 		<?php echo $faqs['pagination']; ?>
 		
 	<?php else: ?>
-		<div class="no_data"><?php echo lang('streams_sample:no_faqs'); ?></div>
+		<div class="no_data"><?php echo lang('faq:no_faqs'); ?></div>
 	<?php endif;?>
 	
 </section>
