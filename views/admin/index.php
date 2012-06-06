@@ -25,7 +25,9 @@
 				<tr>
 					<td><?php echo $faq['question']; ?></td>
 					<td><?php echo $faq['answer']; ?></td>
-					<td><?php echo anchor('admin/faq/edit/' . $faq['id'], lang('global:edit'), 'class="btn orange edit"'); ?></td>
+					<td><?php echo anchor('admin/faq/edit/' . $faq['id'], lang('global:edit'), 'class="btn orange edit"'); ?>
+                                            <?php echo anchor('admin/faq/delete/' . $faq['id'], lang('global:delete'), array('class' => 'confirm btn red delete')); ?>
+                                        </td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
