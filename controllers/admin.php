@@ -111,7 +111,7 @@ class Admin extends Admin_Controller
 			'title'				=> lang('faq:new')
 		);
 		
-		$this->streams->cp->form('faqs', 'faq', $mode = 'new', null, $view_override = true, $extra);
+		$this->streams->cp->entry_form('faqs', 'faq', 'new', null, true, $extra);
 	}
 	
 	// --------------------------------------------------------------------------
@@ -127,7 +127,7 @@ class Admin extends Admin_Controller
 			'title'				=> lang('faq:edit')
 		);
 		
-		$this->streams->cp->form('faqs', 'faq', 'edit', $id, $view_override = true, $extra);
+		$this->streams->cp->entry_form('faqs', 'faq', 'edit', $id, true, $extra);
 	}
 	
 	// --------------------------------------------------------------------------
