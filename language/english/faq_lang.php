@@ -9,3 +9,4 @@ $lang['faq:answer']				= 'Answer';
 
 $lang['faq:submit_success']                     = 'New FAQ submitted successfully.';
 $lang['faq:submit_failure']                     = 'There was a problem submitting your FAQ.';
+$lang['faq:deleted']                            = 'The FAQ was deleted.';

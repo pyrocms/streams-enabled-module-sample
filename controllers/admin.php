@@ -139,7 +139,9 @@ class Admin extends Admin_Controller
 
     public function delete($id = 0)
     {
-        
+        $this->streams->entries->delete_entry($id, 'faqs', 'faq');
+        $this->session->set_flashdata('error', lang('faq:deleted'));
+        redirect('admin/faq/');
     }
 
 }
