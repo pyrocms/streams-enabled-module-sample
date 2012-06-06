@@ -1,26 +1,25 @@
-<div class="sample-container">
-
-	{{ if items_exist == false }}
-		<p>There are no items.</p>
-	{{ else }}
-		<div class="sample-data">
-			<table cellpadding="0" cellspacing="0">
-				<tr>
-					<th>{{ helper:lang line="sample:name" }}</th>
-					<th>{{ helper:lang line="sample:slug" }}</th>
-				</tr>
-				<!-- Here we loop through the $items array -->
-				{{ items }}
-				<tr>
-					<td>{{ name }}</td>
-					<td>{{ slug }}</td>
-				</tr>
-				{{ /items }}
-			</table>
-		</div>
-	
-		{{ pagination:links }}
-	
-	{{ endif }}
-	
+<div id="faq">
+    <div id="questions">
+        <ul>
+        <?php 
+        foreach ($faqs['entries'] as $question)
+        {
+          echo '<li>' .anchor(BASE_URL. '/faq/#' . $question['id'], $question['question'], 'class="faq_q"') . '</li>';  
+        } 
+        ?>
+        </ul>
+    </div>
+    <div id="answers">
+        <ul>
+        <?php
+        foreach ($faqs['entries'] as $answer)
+        {
+            echo '<li class="answer">';
+            echo '<h4><a id="' .$answer['id']. '">' .$answer['question']. '</a></h4>';
+            echo '<p>' .$answer['answer']. '</p>';
+            echo '</li>';
+        }
+        ?>
+        </ul>
+    </div>
 </div>
