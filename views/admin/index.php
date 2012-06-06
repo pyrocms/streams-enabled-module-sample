@@ -25,6 +25,7 @@
 				<tr>
 					<td><?php echo $faq['question']; ?></td>
 					<td><?php echo $faq['answer']; ?></td>
+					<td><?php echo anchor('admin/faq/edit/' . $faq['id'], lang('global:edit'), 'class="btn orange edit"'); ?></td>
 				</tr>
 				<?php endforeach; ?>
 			</tbody>
