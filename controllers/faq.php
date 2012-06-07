@@ -15,6 +15,7 @@ class Faq extends Public_Controller
     {
         parent::__construct();
         $this->load->driver('Streams');
+        $this->template->append_css('module::faq.css');
     }
      /**
      * List all FAQs
