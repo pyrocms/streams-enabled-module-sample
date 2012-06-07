@@ -14,6 +14,7 @@ class Faq extends Public_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->lang->load('faq');
         $this->load->driver('Streams');
         $this->template->append_css('module::faq.css');
     }

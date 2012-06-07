@@ -1,15 +1,17 @@
-{{ title }}
+<h2>{{ template:title }}</h2>
 {{ if faqs.total > 0 }}
 <div id="faq">
+    <h3>{{ helper:lang line="faq:questions" }}</h3>
     {{ pagination:links }}
     <div id="questions">
         <ol>
             {{ faqs.entries }}
-            <li><a class="faq_q" href="{{ url:base }}faq/#{{ id }}">{{ question }}</a></li>
+            <li>{{ url:anchor segments="faq/#{{ id }}" title="{{ question }}" class="question" }}</li>
             {{ /faqs.entries }}
         </ol>
     </div>
     <div id="answers">
+        <h3>{{ helper:lang line="faq:answers" }}</h3>
         <ol> 
             {{ faqs.entries }}
             <li class="answer">
