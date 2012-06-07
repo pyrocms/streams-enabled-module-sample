@@ -1,25 +1,23 @@
+{{ if faqs.total > 0 }}
 <div id="faq">
     <div id="questions">
         <ul>
-            <?php
-            foreach ($faqs['entries'] as $question)
-            {
-                echo '<li>' . anchor(BASE_URL . '/faq/#' . $question['id'], $question['question'], 'class="faq_q"') . '</li>';
-            }
-            ?>
+            {{ faqs.entries }}
+            <li><a class="faq_q" href="<?php echo BASE_URL ?>faq/#{{ id }}">{{ question }}</a></li>
+            {{ /faqs.entries }}
         </ul>
     </div>
     <div id="answers">
-        <ul>
-            <?php
-            foreach ($faqs['entries'] as $answer)
-            {
-                echo '<li class="answer">';
-                echo '<h4><a id="' . $answer['id'] . '">' . $answer['question'] . '</a></h4>';
-                echo '<p>' . $answer['answer'] . '</p>';
-                echo '</li>';
-            }
-            ?>
+        <ul> 
+            {{ faqs.entries }}
+            <li class="answer">
+                <h4><a class="anchor" id="{{ id }}">{{ question }}</a></h4>
+                <p>{{ answer }}</p>
+            </li>
+            {{ /faqs.entries }}
         </ul>
     </div>
 </div>
+{{ else }}
+<h4>There are currently no FAQs.</h4>
+{{ endif }}
