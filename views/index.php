@@ -1,5 +1,6 @@
 {{ if faqs.total > 0 }}
 <div id="faq">
+    {{ pagination:links }}
     <div id="questions">
         <ul>
             {{ faqs.entries }}
