@@ -1,6 +1,6 @@
 <section class="title">
-	<!-- We'll use $this->method to switch between sample.create & sample.edit -->
-	<h4><?php echo lang('sample:'.$this->method); ?></h4>
+	<!-- We'll use $this->method to switch between faq.create & faq.edit -->
+	<h4><?php echo lang('faq:'.$this->method); ?></h4>
 </section>
 
 <section class="item">
@@ -11,13 +11,13 @@
 	
 		<ul>
 			<li class="<?php echo alternator('', 'even'); ?>">
-				<label for="name"><?php echo lang('sample:name'); ?> <span>*</span></label>
-				<div class="input"><?php echo form_input('name', set_value('name', $name), 'class="width-15"'); ?></div>
+				<label for="question"><?php echo lang('faq:question'); ?> <span>*</span></label>
+				<div class="input"><?php echo form_input('question', set_value('question', $question), 'class="width-15"'); ?></div>
 			</li>
 
 			<li class="<?php echo alternator('', 'even'); ?>">
-				<label for="slug"><?php echo lang('sample:slug'); ?> <span>*</span></label>
-				<div class="input"><?php echo form_input('slug', set_value('slug', $slug), 'class="width-15"'); ?></div>
+				<label for="answer"><?php echo lang('faq:answer'); ?> <span>*</span></label>
+				<div class="input"><?php echo form_textarea('answer', set_value('answer', $answer), 'class="width-15"'); ?></div>
 			</li>
 		</ul>
 		
