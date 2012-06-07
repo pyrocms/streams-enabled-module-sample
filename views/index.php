@@ -5,7 +5,7 @@
     <div id="questions">
         <ol>
             {{ faqs.entries }}
-            <li><a class="faq_q" href="<?php echo BASE_URL ?>faq/#{{ id }}">{{ question }}</a></li>
+            <li><a class="faq_q" href="{{ url:base }}faq/#{{ id }}">{{ question }}</a></li>
             {{ /faqs.entries }}
         </ol>
     </div>
