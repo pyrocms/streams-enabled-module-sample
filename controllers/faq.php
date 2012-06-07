@@ -16,7 +16,16 @@ class Faq extends Public_Controller
         parent::__construct();
         $this->load->driver('Streams');
     }
-
+     /**
+     * List all FAQs
+     *
+     * We are using the Streams API to grab
+     * data from the faqs database. It handles
+     * pagination as well.
+     *
+     * @access	public
+     * @return	void
+     */
     public function index()
     {
         $params = array(

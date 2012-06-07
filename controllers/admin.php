@@ -33,7 +33,7 @@ class Admin extends Admin_Controller
      * List all FAQs
      *
      * We are using the Streams API to grab
-     * data from the dogs database. It handles
+     * data from the faqs database. It handles
      * pagination as well.
      *
      * @access	public
@@ -120,7 +120,20 @@ class Admin extends Admin_Controller
     }
 
     // --------------------------------------------------------------------------
-
+    
+    /**
+     * Edit a FAQ entry
+     *
+     * This uses the Streams API CP driver which
+     * is designed to handle repetitive CP tasks
+     * down to even loading the page.
+     *
+     * Certain things can be overridden, but this
+     * is an example using almost all default values.
+     *
+     * @access	public
+     * @return	void
+     */
     public function edit($id = 0)
     {
         $this->template->title(lang('faq:edit'));
@@ -137,6 +150,17 @@ class Admin extends Admin_Controller
 
     // --------------------------------------------------------------------------
 
+    /**
+     * Delete a FAQ entry
+     * 
+     * This uses the Streams API Entries driver which is
+     * designed to work with entires within a Stream.
+     * 
+     * @access  public
+     * @param   int $id The id of FAQ to be deleted
+     * @return  void
+     * @todo    This function does not currently hava any error checking.
+     */
     public function delete($id = 0)
     {
         $this->streams->entries->delete_entry($id, 'faqs', 'faq');
@@ -145,3 +169,4 @@ class Admin extends Admin_Controller
     }
 
 }
+/* End of file admin.php */
