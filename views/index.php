@@ -1,22 +1,23 @@
+{{ title }}
 {{ if faqs.total > 0 }}
 <div id="faq">
     {{ pagination:links }}
     <div id="questions">
-        <ul>
+        <ol>
             {{ faqs.entries }}
             <li><a class="faq_q" href="<?php echo BASE_URL ?>faq/#{{ id }}">{{ question }}</a></li>
             {{ /faqs.entries }}
-        </ul>
+        </ol>
     </div>
     <div id="answers">
-        <ul> 
+        <ol> 
             {{ faqs.entries }}
             <li class="answer">
-                <h4><a class="anchor" id="{{ id }}">{{ question }}</a></h4>
+                <h4 id="{{ id }}">{{ question }}</h4>
                 <p>{{ answer }}</p>
             </li>
             {{ /faqs.entries }}
-        </ul>
+        </ol>
     </div>
 </div>
 {{ else }}
