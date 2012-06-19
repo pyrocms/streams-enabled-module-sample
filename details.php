@@ -14,8 +14,8 @@ class Module_Faq extends Module
             'description' => array(
                 'en' => 'Frequently Asked Questions'
             ),
-            'frontend' => TRUE,
-            'backend' => TRUE,
+            'frontend' => true,
+            'backend' => true,
             'menu' => 'content',
             'shortcuts' => array(
                 'create' => array(
@@ -36,10 +36,7 @@ class Module_Faq extends Module
         $this->load->language('faq/faq');
 
         // Add faqs streams
-        if (!$this->streams->streams->add_stream(
-                        lang('faq:faqs'), 'faqs', 'faq', 'faq_', NULL
-        ))
-            return FALSE;
+        if ( ! $this->streams->streams->add_stream(lang('faq:faqs'), 'faqs', 'faq', 'faq_', null)) return false;
 
         // Add some fields
         $fields = array(
@@ -50,9 +47,9 @@ class Module_Faq extends Module
                 'type' => 'text',
                 'extra' => array('max_length' => 200),
                 'assign' => 'faqs',
-                'title_column' => TRUE,
-                'required' => TRUE,
-                'unique' => TRUE
+                'title_column' => true,
+                'required' => true,
+                'unique' => true
             ),
             array(
                 'name' => 'Answer',
@@ -60,13 +57,13 @@ class Module_Faq extends Module
                 'namespace' => 'faq',
                 'type' => 'textarea',
                 'assign' => 'faqs',
-                'required' => TRUE
+                'required' => true
             )
         );
 
         $this->streams->fields->add_fields($fields);
 
-        return TRUE;
+        return true;
     }
 
     public function uninstall()
@@ -75,13 +72,13 @@ class Module_Faq extends Module
 
         $this->streams->utilities->remove_namespace('faq');
 
-        return TRUE;
+        return true;
     }
 
     public function upgrade($old_version)
     {
         // Your Upgrade Logic
-        return TRUE;
+        return true;
     }
 
     public function help()
