@@ -23,5 +23,5 @@
     </div>
 </div>
 {{ else }}
-<h4>There are currently no FAQs.</h4>
+<h4>{{ helper:lang line="faq:no_faqs" }}</h4>
 {{ endif }}
