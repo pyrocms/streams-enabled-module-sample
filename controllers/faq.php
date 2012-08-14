@@ -31,7 +31,7 @@ class Faq extends Public_Controller
             'stream' => 'faqs',
             'namespace' => 'faq',
             'paginate' => 'yes',
-            'page_segment' => 4
+            'pag_segment' => 4
         );
 
         $this->data->faqs = $this->streams->entries->get_entries($params);
