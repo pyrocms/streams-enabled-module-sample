@@ -41,7 +41,7 @@ class Admin extends Admin_Controller
      */
     public function index()
     {
-        $extra['title'] = lang_label('lang:faq:faqs');
+        $extra['title'] = 'lang:faq:faqs';
         $extra['buttons'] = array(
             array(
                 'label' => lang('global:edit'),
@@ -108,13 +108,11 @@ class Admin extends Admin_Controller
      */
     public function create()
     {
-        $this->template->title(lang('faq:new'));
-
         $extra = array(
             'return' => 'admin/faq',
             'success_message' => lang('faq:submit_success'),
             'failure_message' => lang('faq:submit_failure'),
-            'title' => lang('faq:new')
+            'title' => 'lang:faq:new'
         );
 
         $this->streams->cp->entry_form('faqs', 'faq', 'new', null, true, $extra);
