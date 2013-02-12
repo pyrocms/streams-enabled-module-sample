@@ -14,6 +14,10 @@
  */
 class Admin extends Admin_Controller
 {
+    // This will set the active section tab
+    protected $section = 'faq';
+
+    protected $data;
 
     public function __construct()
     {
@@ -27,16 +31,45 @@ class Admin extends Admin_Controller
     // --------------------------------------------------------------------------
 
     /**
-     * List all FAQs
+     * List all FAQs using Streams CP Driver
      *
-     * We are using the Streams API to grab
-     * data from the faqs database. It handles
-     * pagination as well.
+     * In this alternate index, we are using the
+     * Streams API driver to 
      *
      * @access	public
      * @return	void
      */
     public function index()
+    {
+        $extra['title'] = lang_label('lang:faq:faqs');
+        $extra['buttons'] = array(
+            array(
+                'label' => lang('global:edit'),
+                'url' => 'admin/faq/edit/-entry_id-'
+            ),
+            array(
+                'label' => lang('global:delete'),
+                'url' => 'admin/faq/delete/-entry_id-',
+                'confirm' => true
+            )
+        );
+
+        $this->streams->cp->entries_table('faqs', 'faq', 3, 'admin/faq/index', true, $extra);
+    }
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * List all FAQs using Streams Entries Driver and building a custom template
+     *
+     * We are using the Streams API to grab
+     * data from the faqs database. It handles
+     * pagination as well.
+     *
+     * @access  public
+     * @return  void
+     */
+    public function _index()
     {
         // The get_entries function in the
         // entries Streams API drivers grabs
@@ -56,35 +89,6 @@ class Admin extends Admin_Controller
         // Build the page
         $this->template->title($this->module_details['name'])
                 ->build('admin/index', $this->data);
-    }
-
-    // --------------------------------------------------------------------------
-
-    /**
-     * Alternat list all FAQs
-     *
-     * In this alternate index, we are using the
-     * Streams API driver to 
-     *
-     * @access	public
-     * @return	void
-     */
-    public function _index()
-    {
-        $extra['title'] = 'Faq';
-        $extra['buttons'] = array(
-            array(
-                'label' => lang('global:edit'),
-                'url' => 'admin/faq/edit/-entry_id-'
-            ),
-            array(
-                'label' => lang('global:delete'),
-                'url' => 'admin/faq/delete/-entry_id-',
-                'confirm' => true
-            )
-        );
-
-        $this->streams->cp->entries_table('faqs', 'faq', 1, 'admin/faq/index', true, $extra);
     }
 
     // --------------------------------------------------------------------------
@@ -133,13 +137,11 @@ class Admin extends Admin_Controller
      */
     public function edit($id = 0)
     {
-        $this->template->title(lang('faq:edit'));
-
         $extra = array(
             'return' => 'admin/faq',
             'success_message' => lang('faq:submit_success'),
             'failure_message' => lang('faq:submit_failure'),
-            'title' => lang('faq:edit')
+            'title' => 'lang:faq:edit'
         );
 
         $this->streams->cp->entry_form('faqs', 'faq', 'edit', $id, true, $extra);
@@ -151,7 +153,7 @@ class Admin extends Admin_Controller
      * Delete a FAQ entry
      * 
      * This uses the Streams API Entries driver which is
-     * designed to work with entires within a Stream.
+     * designed to work with entries within a Stream.
      * 
      * @access  public
      * @param   int $id The id of FAQ to be deleted
