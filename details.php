@@ -17,11 +17,32 @@ class Module_Faq extends Module
             'frontend' => true,
             'backend' => true,
             'menu' => 'content',
-            'shortcuts' => array(
-                'create' => array(
-                    'name' => 'faq:new',
-                    'uri' => 'admin/faq/create',
-                    'class' => 'add'
+            'sections' => array(
+                'faq' => array(
+                    'name' => 'faq:faqs',
+                    'uri' => 'admin/faq',
+                    'shortcuts' => array(
+                        'create' => array(
+                            'name' => 'faq:new',
+                            'uri' => 'admin/faq/create',
+                            'class' => 'add'
+                        )
+                    )
+                ),
+                'categories' => array(
+                    'name' => 'faq:categories',
+                    'uri' => 'admin/faq/categories/index',
+                    'shortcuts' => array(
+                        'create' => array(
+                            'name' => 'faq:category:new',
+                            'uri' => 'admin/faq/categories/create',
+                            'class' => 'add'
+                        )
+                    )
+                ),
+                'streams' => array(
+                    'name' => 'faq:streams',
+                    'uri' => 'admin/faq/streams/index'
                 )
             )
         );
@@ -36,7 +57,10 @@ class Module_Faq extends Module
         $this->load->language('faq/faq');
 
         // Add faqs streams
-        if ( ! $this->streams->streams->add_stream(lang('faq:faqs'), 'faqs', 'faq', 'faq_', null)) return false;
+        if ( ! $this->streams->streams->add_stream('lang:faq:faqs', 'faqs', 'faq', 'faq_', null)) return false;
+        if ( ! $categories_stream_id = $this->streams->streams->add_stream('lang:faq:categories', 'categories', 'faq', 'faq_', null)) return false;
+
+        //$faq_categories
 
         // Add some fields
         $fields = array(
@@ -58,10 +82,44 @@ class Module_Faq extends Module
                 'type' => 'textarea',
                 'assign' => 'faqs',
                 'required' => true
+            ),
+            array(
+                'name' => 'Title',
+                'slug' => 'faq_category_title',
+                'namespace' => 'faq',
+                'type' => 'text',
+                'assign' => 'categories',
+                'title_column' => true,
+                'required' => true,
+                'unique' => true
+            ),
+            array(
+                'name' => 'Category',
+                'slug' => 'faq_category_select',
+                'namespace' => 'faq',
+                'type' => 'relationship',
+                'assign' => 'faqs',
+                'extra' => array('choose_stream' => $categories_stream_id)
             )
         );
 
         $this->streams->fields->add_fields($fields);
+
+        $this->streams->streams->update_stream('faqs', 'faq', array(
+            'view_options' => array(
+                'id',
+                'question',
+                'answer',
+                'faq_category_select'
+            )
+        ));
+
+        $this->streams->streams->update_stream('categories', 'faq', array(
+            'view_options' => array(
+                'id',
+                'faq_category_title'
+            )
+        ));
 
         return true;
     }
