@@ -2,7 +2,6 @@
 
 class Module_Faq extends Module
 {
-
     public $version = '1.0';
 
     public function info()
@@ -44,6 +43,12 @@ class Module_Faq extends Module
         );
     }
 
+    /**
+     * Install
+     *
+     * This function will set up our
+     * FAQ/Category streams.
+     */
     public function install()
     {
         // We're using the streams API to
@@ -120,10 +125,18 @@ class Module_Faq extends Module
         return true;
     }
 
+    /**
+     * Uninstall
+     *
+     * Uninstall our module - this should tear down
+     * all information associated with it.
+     */
     public function uninstall()
     {
         $this->load->driver('Streams');
 
+        // For this teardown we are using the simple remove_namespace
+        // utility in the Streams API Utilties driver.
         $this->streams->utilities->remove_namespace('faq');
 
         return true;
@@ -131,7 +144,6 @@ class Module_Faq extends Module
 
     public function upgrade($old_version)
     {
-        // Your Upgrade Logic
         return true;
     }
 
