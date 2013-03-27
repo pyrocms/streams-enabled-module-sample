@@ -43,11 +43,11 @@ class Admin_categories extends Admin_Controller
         
         $extra['buttons'] = array(
             array(
-                'label' => 'lang:global:edit',
+                'label' => lang('global:edit'),
                 'url' => 'admin/faq/categories/edit/-entry_id-'
             ),
             array(
-                'label' => 'lang:global:delete',
+                'label' => lang('global:delete'),
                 'url' => 'admin/faq/categories/delete/-entry_id-',
                 'confirm' => true
             )
