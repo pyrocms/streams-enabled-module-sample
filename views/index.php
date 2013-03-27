@@ -1,4 +1,7 @@
+<div class="content">
+
 <h2>{{ template:title }}</h2>
+
 {{ if faqs.total > 0 }}
 <div id="faq">
     <h3>{{ helper:lang line="faq:questions" }}</h3>
@@ -25,3 +28,5 @@
 {{ else }}
 <h4>{{ helper:lang line="faq:no_faqs" }}</h4>
 {{ endif }}
+
+</div>
