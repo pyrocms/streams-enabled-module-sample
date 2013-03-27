@@ -39,10 +39,6 @@ class Module_Faq extends Module
                             'class' => 'add'
                         )
                     )
-                ),
-                'streams' => array(
-                    'name' => 'faq:streams',
-                    'uri' => 'admin/faq/streams/index'
                 )
             )
         );
