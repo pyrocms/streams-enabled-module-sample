@@ -4,4 +4,4 @@ This module illustrates the use of the Streams Core API to handle data interacti
 
 ## Installation
 
-Unzip the folde, rename it to 'faq', and drop it into your addons/_site\_ref_/modules or addons/shared\_addons/modules folder. Install from the admin panel.
+Unzip the folder, rename it to 'faq', and drop it into your addons/_site\_ref_/modules or addons/shared\_addons/modules folder. Install from the admin panel.
