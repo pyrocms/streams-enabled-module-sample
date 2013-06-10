@@ -34,11 +34,11 @@ class Faq extends Public_Controller
             'pag_segment' => 4
         );
 
-        $this->data->faqs = $this->streams->entries->get_entries($params);
+        $data->faqs = $this->streams->entries->get_entries($params);
 
         // Build the page
         $this->template->title($this->module_details['name'])
-                ->build('index', $this->data);
+                ->build('index', $data);
     }
 
 }
