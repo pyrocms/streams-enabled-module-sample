@@ -2,7 +2,8 @@
 
 class Faq extends Public_Controller
 {
-
+    
+    var $data; //Store Template Data
     /**
      * The constructor
      * @access public
@@ -14,6 +15,7 @@ class Faq extends Public_Controller
         $this->lang->load('faq');
         $this->load->driver('Streams');
         $this->template->append_css('module::faq.css');
+        $this->data = new stdClass();
     }
      /**
      * List all FAQs
